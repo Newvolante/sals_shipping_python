@@ -1,0 +1,39 @@
+# shipping cost for ground shipping
+def ground_shipping_cost(weight):
+  if (weight <= 2):
+    return 1.50 * weight
+  elif (weight > 2) and (weight <= 6):
+    return 3 * weight
+  elif (weight > 6) and (weight <= 10):
+    return 4 * weight
+  elif (weight > 10):
+    return 4.75 * weight
+
+# shipping cost for drone shipping
+def drone_shipping_cost(weight):
+  if (weight <= 2):
+    return 4.50 * weight
+  elif (weight > 2) and (weight <= 6):
+    return 9 * weight
+  elif (weight > 6) and (weight <= 10):
+    return 12 * weight
+  elif (weight > 10):
+    return 14.25 * weight
+
+#flat premium cost
+premium_ground_shipping_cost = 125
+
+#which delivery service is cheaper, for a given weight?
+def best_shipping_method(weight):
+  ground_delivery = ground_shipping_cost(weight)
+  drone_delivery = drone_shipping_cost(weight)
+  if (ground_delivery < drone_delivery) and (ground_delivery < premium_ground_shipping_cost):
+    print('You should opt for a standard delivery, for: ' + str(ground_delivery) + ' pound(s)')
+  elif (drone_delivery < ground_delivery) and (drone_delivery < premium_ground_shipping_cost):
+    print('You should opt for a drone delivery, for: ' + str(drone_delivery) + ' pound(s)')
+  else:
+    print ('You should opt for a premium delivery ground delivery for ' + str(premium_ground_shipping_cost) + ' pound(s)')
+
+# testing the function
+best_shipping_method(50)
+
